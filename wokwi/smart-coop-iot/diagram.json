@@ -1,0 +1,395 @@
+
+{
+  "version": 1,
+  "author": "Smart Coop IoT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 300,
+      "left": 450,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": 70,
+      "left": 50,
+      "attrs": {
+        "temperature": "28.6",
+        "humidity": "72"
+      }
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "mq2",
+      "top": 70,
+      "left": 270,
+      "attrs": {
+        "ppm": "412",
+        "threshold": "4.4"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 70,
+      "left": 500,
+      "attrs": {
+        "value": "512"
+      }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 70,
+      "left": 900,
+      "attrs": {
+        "pins": "i2c",
+        "i2cAddress": "0x27"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 340,
+      "left": 950,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": 520,
+      "left": 930,
+      "attrs": {
+        "transistor": "pnp"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "fanLed",
+      "top": 520,
+      "left": 1200,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "fanResistor",
+      "top": 560,
+      "left": 1150,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "gasLed",
+      "top": 700,
+      "left": 1200,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "gasResistor",
+      "top": 680,
+      "left": 1150,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": 650,
+      "left": 680,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "modeButton",
+      "top": 850,
+      "left": 500,
+      "attrs": {
+        "color": "blue",
+        "label": "AUTO / MANUAL",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "statusRGB",
+      "top": 850,
+      "left": 800,
+      "attrs": {
+        "common": "anode"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rgbResistorR",
+      "top": 920,
+      "left": 740,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rgbResistorG",
+      "top": 960,
+      "left": 740,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rgbResistorB",
+      "top": 1000,
+      "left": 740,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:3V3",
+      "dht1:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "dht1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:15",
+      "dht1:SDA",
+      "orange",
+      []
+    ],
+
+    [
+      "esp:5V",
+      "mq2:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "mq2:GND",
+      "black",
+      []
+    ],
+    [
+      "mq2:AOUT",
+      "esp:34",
+      "green",
+      []
+    ],
+
+    [
+      "esp:3V3",
+      "pot1:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "pot1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:35",
+      "pot1:SIG",
+      "green",
+      []
+    ],
+
+    [
+      "esp:5V",
+      "lcd1:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "lcd1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:21",
+      "lcd1:SDA",
+      "green",
+      []
+    ],
+    [
+      "esp:22",
+      "lcd1:SCL",
+      "yellow",
+      []
+    ],
+
+    [
+      "esp:5V",
+      "servo1:V+",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "servo1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:18",
+      "servo1:PWM",
+      "orange",
+      []
+    ],
+
+    [
+      "esp:5V",
+      "relay1:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "relay1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:19",
+      "relay1:IN",
+      "green",
+      []
+    ],
+
+    [
+      "esp:5V",
+      "relay1:COM",
+      "red",
+      []
+    ],
+    [
+      "relay1:NO",
+      "fanResistor:1",
+      "orange",
+      []
+    ],
+    [
+      "fanResistor:2",
+      "fanLed:A",
+      "orange",
+      []
+    ],
+    [
+      "fanLed:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+
+    [
+      "esp:25",
+      "gasResistor:1",
+      "red",
+      []
+    ],
+    [
+      "gasResistor:2",
+      "gasLed:A",
+      "red",
+      []
+    ],
+    [
+      "gasLed:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+
+    [
+      "esp:23",
+      "buzzer1:2",
+      "orange",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "buzzer1:1",
+      "black",
+      []
+    ],
+
+    [
+      "esp:26",
+      "modeButton:1.l",
+      "blue",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "modeButton:2.l",
+      "black",
+      []
+    ],
+
+    [
+      "esp:3V3",
+      "statusRGB:COM",
+      "red",
+      []
+    ],
+    [
+      "esp:16",
+      "rgbResistorR:1",
+      "red",
+      []
+    ],
+    [
+      "rgbResistorR:2",
+      "statusRGB:R",
+      "red",
+      []
+    ],
+    [
+      "esp:17",
+      "rgbResistorG:1",
+      "green",
+      []
+    ],
+    [
+      "rgbResistorG:2",
+      "statusRGB:G",
+      "green",
+      []
+    ],
+    [
+      "esp:27",
+      "rgbResistorB:1",
+      "blue",
+      []
+    ],
+    [
+      "rgbResistorB:2",
+      "statusRGB:B",
+      "blue",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
